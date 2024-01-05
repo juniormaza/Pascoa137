@@ -1,0 +1,12 @@
+id,username,firstName,lastName,email,password,phone,userStatus
+1373795580,junior,Nyvus,Boi,Nyvus@nyvus.com,123456,1196666666,0
+1373795581,alice,Alice,Johnson,alice@example.com,654321,1196666667,1
+1373795582,bob,Bob,Smith,bob@example.com,987654,1196666668,1
+1373795583,charlie,Charlie,Brown,charlie@example.com,567890,1196666669,1
+1373795584,diana,Diana,Ross,diana@example.com,234567,1196666670,1
+1373795585,edward,Edward,Norton,edward@example.com,876543,1196666671,1
+1373795586,fiona,Fiona,Jones,fiona@example.com,345678,1196666672,1
+1373795587,george,George,Miller,george@example.com,789012,1196666673,1
+1373795588,helen,Helen,Turner,helen@example.com,456789,1196666674,1
+1373795589,ian,Ian,Williams,ian@example.com,210987,1196666675,1
+1373795590,jack,Jack,Anderson,jack@example.com,135792,1196666676,1
