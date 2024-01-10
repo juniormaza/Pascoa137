@@ -3,10 +3,12 @@ package apiTest;
 
 // Bibliotecas
 
-
+import com.google.gson.Gson;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -20,6 +22,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 // Classe
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class TesteUser {
     // Atributos
@@ -36,7 +39,8 @@ public class TesteUser {
 
     // Funções de Testes
     @Test
-    public void testarIncluirUser() throws IOException {
+    @Order(1)
+    public void testarIncluirUser() throws IOException { // Inicio do Post User
         // carregar os dados do json
         String jsonBody = lerArquivoJson("src/test/resources/json/user1.json");
 
@@ -61,7 +65,8 @@ public class TesteUser {
 
 
     @Test
-    public void testarConsultarUser(){
+    @Order(2)
+    public void testarConsultarUser(){  // Inicio do Get User
         String username = "junior";
 
         // resultado esperados
@@ -86,6 +91,7 @@ public class TesteUser {
 
     }   // fim do Get User
     @Test
+    @Order(3)
     public void testarAlterarUser() throws IOException {     // inicio do Put User
         String jsonBody = lerArquivoJson("src/test/resources/json/user2.json");
 
@@ -110,6 +116,7 @@ public class TesteUser {
     }   // fim do Put User
 
     @Test
+    @Order(4)
     public void testarExcluirUser(){    // inicio do Delete User
         String username = "junior";
 
@@ -130,7 +137,8 @@ public class TesteUser {
 
     }   // fim do Delete User
     @Test
-    public void testarLogin(){
+    @Order(5)
+    public void testarLogin(){  // inicio do get login
         String username = "junior";
         String password = "abcdef";
 
@@ -153,10 +161,11 @@ public class TesteUser {
 
         String token = response.jsonPath().getString("message").substring(23);
         System.out.println("Conteúdo do Token: " + token);
-    }
+    }   // fim do get login
 
     @ParameterizedTest
-    @CsvFileSource(resources = "C:\\Users\\amari\\IdeaProjects\\Pascoa137\\src\\test\\resources\\csv\\massaUser.csv", numLinesToSkip = 1, delimiter = ',')
+    @Order(6)
+    @CsvFileSource(resources = "/csv/massaUser.csv", numLinesToSkip = 1, delimiter = ',' )
     public void tertarIncluirUserCSV(
             String id,
             String username,
@@ -168,6 +177,7 @@ public class TesteUser {
             String userStatus)
     { // inicio incluir CSV
         // carregar os dados do json
+        /*
         StringBuilder jsonBody = new StringBuilder("{");
         jsonBody.append("'id': " + id + ",");
         jsonBody.append("'username': " + username + "," );
@@ -178,7 +188,21 @@ public class TesteUser {
         jsonBody.append("'phone': " + phone + ",");
         jsonBody.append("'userStatus': " + userStatus + ",");
         jsonBody.append("}");
+        */
 
+        User user = new User(); // instancia a classe User
+
+        user.id = id;
+        user.username = username;
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        user.password = password;
+        user.phone = phone;
+        user.userStatus = userStatus;
+
+        Gson gson = new Gson(); // instancia a classe Gson
+        String jsonBody = gson.toJson(user);
 
         // realizar o teste
         given()                                        // Dado que
