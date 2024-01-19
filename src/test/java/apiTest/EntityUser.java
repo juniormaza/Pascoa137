@@ -1,6 +1,6 @@
 package apiTest;
 
-public class User {
+public class EntityUser {
     public String id;
     public String username;
     public String firstName;

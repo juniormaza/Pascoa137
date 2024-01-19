@@ -16,7 +16,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -190,7 +189,7 @@ public class TesteUser {
         jsonBody.append("}");
         */
 
-        User user = new User(); // instancia a classe User
+        EntityUser user = new EntityUser(); // instancia a classe User
 
         user.id = id;
         user.username = username;
