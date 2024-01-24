@@ -1,6 +1,6 @@
 package webTest;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
@@ -22,13 +22,13 @@ public class ComprarPassagemSIDE {
     JavascriptExecutor js;
     @BeforeEach
     public void setUp() {
-        //WebDriverManager.chromedriver().setup();
+       // WebDriverManager.chromedriver().forceDownload().setup();
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         // Aponta onde está o Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
+       System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
         driver = new ChromeDriver(options); // Instancia / Liga o chrome Driver
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
