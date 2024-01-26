@@ -28,7 +28,7 @@ public class ComprarPassagemSIDE {
         options.addArguments("--remote-allow-origins=*");
 
         // Aponta onde está o Chrome Driver
-       System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers/chrome/chromedriver.exe");
         driver = new ChromeDriver(options); // Instancia / Liga o chrome Driver
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
